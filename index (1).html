@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Faculty Finder – Exam Duty Adjustment | MRU</title>
+  <style>
+    :root {
+      --primary: #1a365d;
+      --accent: #2b6cb0;
+      --bg: #f0f4f8;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --muted: #718096;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: #1a202c;
+      line-height: 1.5;
+      padding: 1rem;
+    }
+    .container { max-width: 1000px; margin: 0 auto; }
+    header {
+      background: linear-gradient(135deg, #1a365d, #2b6cb0);
+      color: white;
+      padding: 1.75rem 1.5rem;
+      border-radius: 14px;
+      margin-bottom: 1.25rem;
+      text-align: center;
+    }
+    header h1 { font-size: 1.6rem; margin-bottom: 0.3rem; }
+    header p { opacity: 0.9; font-size: 0.95rem; }
+    .howto {
+      background: #fffbeb;
+      border: 1px solid #f6e05e;
+      border-radius: 10px;
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.92rem;
+    }
+    .howto strong { color: #975a16; }
+    .howto ol { margin: 0.5rem 0 0 1.2rem; }
+    .howto li { margin-bottom: 0.25rem; }
+    .controls {
+      display: grid;
+      grid-template-columns: 1fr 1fr 2fr auto;
+      gap: 0.75rem;
+      background: var(--card);
+      padding: 1.1rem;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      margin-bottom: 1rem;
+      align-items: end;
+    }
+    @media (max-width: 700px) {
+      .controls { grid-template-columns: 1fr 1fr; }
+    }
+    label { display: block; font-size: 0.75rem; font-weight: 600; color: var(--muted); margin-bottom: 0.3rem; text-transform: uppercase; letter-spacing: 0.03em; }
+    select, input[type="search"] {
+      width: 100%;
+      padding: 0.55rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      background: white;
+    }
+    select:focus, input:focus { outline: 2px solid var(--accent); border-color: transparent; }
+    .btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0.6rem 1.2rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      font-size: 0.95rem;
+      white-space: nowrap;
+    }
+    .btn:hover { background: #2c5282; }
+    .stats {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+      font-size: 0.88rem;
+    }
+    .stat {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+    }
+    .stat b { color: var(--accent); }
+    .note {
+      background: #ebf8ff;
+      border-left: 4px solid var(--accent);
+      padding: 0.7rem 1rem;
+      margin-bottom: 1rem;
+      font-size: 0.88rem;
+      border-radius: 0 8px 8px 0;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--card);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      font-size: 0.9rem;
+    }
+    th {
+      background: var(--primary);
+      color: white;
+      text-align: left;
+      padding: 0.7rem 1rem;
+      font-weight: 600;
+      position: sticky;
+      top: 0;
+    }
+    td { padding: 0.55rem 1rem; border-bottom: 1px solid var(--border); }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: #f0f7ff; }
+    .badge {
+      display: inline-block;
+      padding: 0.12rem 0.5rem;
+      border-radius: 999px;
+      font-size: 0.72rem;
+      font-weight: 600;
+    }
+    .badge-flying { background: #feebc8; color: #9c4221; }
+    .badge-invig { background: #c6f6d5; color: #276749; }
+    .contact {
+      font-family: ui-monospace, monospace;
+      font-weight: 600;
+      color: var(--accent);
+      text-decoration: none;
+    }
+    .contact:hover { text-decoration: underline; }
+    .empty { text-align: center; padding: 2.5rem; color: var(--muted); }
+    footer {
+      margin-top: 1.75rem;
+      text-align: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+    .pdf-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      background: #c53030;
+      color: white;
+      padding: 0.4rem 0.9rem;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+    .pdf-link:hover { background: #9b2c2c; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Free Faculty Finder</h1>
+      <p>Mid-Semester Exam Duty Adjustment • 21–25 September 2026 • Manav Rachna University</p>
+      <a class="pdf-link" href="Duty Chart Mid Sem Exam_September-2026_20260914 (3).pdf" target="_blank">Open Official Duty Chart PDF</a>
+    </header>
+
+    <div class="howto">
+      <strong>How to find free faculty for a slot:</strong>
+      <ol>
+        <li>Select the <b>Date</b> and <b>Slot</b> below (Morning / Afternoon / Evening).</li>
+        <li>Open the <b>Official Duty Chart PDF</b> (button above) side-by-side with this page.</li>
+        <li>In the PDF, look at the three columns under that date:
+          <ul>
+            <li><b>1st column</b> = Morning (Report ~8:45 AM)</li>
+            <li><b>2nd column</b> = Afternoon (Report ~11:45 AM)</li>
+            <li><b>3rd column</b> = Evening (Report ~2:15 PM)</li>
+          </ul>
+        </li>
+        <li><b>Blank cell</b> = Free → call them using the number below.<br>
+            <b>Tick (✓)</b> = Already has duty → skip them for that slot.</li>
+      </ol>
+    </div>
+
+    <div class="controls">
+      <div>
+        <label for="dateSelect">Date</label>
+        <select id="dateSelect">
+          <option value="21.09.2026">21 Sep 2026 (Mon)</option>
+          <option value="22.09.2026" selected>22 Sep 2026 (Tue) – Today</option>
+          <option value="23.09.2026">23 Sep 2026 (Wed)</option>
+          <option value="24.09.2026">24 Sep 2026 (Thu)</option>
+          <option value="25.09.2026">25 Sep 2026 (Fri)</option>
+        </select>
+      </div>
+      <div>
+        <label for="slotSelect">Slot</label>
+        <select id="slotSelect">
+          <option value="Morning" selected>Morning (9:00–10:30)</option>
+          <option value="Afternoon">Afternoon (12:00–1:30)</option>
+          <option value="Evening">Evening (2:30–4:00)</option>
+        </select>
+      </div>
+      <div>
+        <label for="searchInput">Search name or department</label>
+        <input type="search" id="searchInput" placeholder="e.g. Sharma, CST, LAW..." />
+      </div>
+      <button class="btn" onclick="render()">Search</button>
+    </div>
+
+    <div class="note" id="slotNote">
+      Showing all Flying Squad & Invigilation faculty for <b>22 Sep 2026 – Morning</b>.  
+      Cross-check the <b>1st column under 22.09.2026</b> in the PDF for blanks (= free).
+    </div>
+
+    <div class="stats" id="stats"></div>
+
+    <div style="overflow-x:auto; max-height: 65vh; overflow-y: auto;">
+      <table>
+        <thead>
+          <tr>
+            <th style="width:40px">#</th>
+            <th>Faculty Name</th>
+            <th>Department</th>
+            <th>Contact</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody id="tableBody">
+          <tr><td colspan="5" class="empty">Loading...</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <footer>
+      Fixed responsibility staff (Control Room, Block In-charges, COE Office) are excluded – they are not available for adjustment.<br>
+      Always verify free status from the official PDF before contacting anyone.
+    </footer>
+  </div>
+
+  <script>
+    const faculty = [
+      {"name":"Dr. Shruti Vashist","dept":"Dean Academics","contact":"9818244972","role":"FLYING"},
+      {"name":"Dr. Asha Varma","dept":"LAW","contact":"9266840099","role":"FLYING"},
+      {"name":"Dr. Dipali Bansal","dept":"ENGINEERING","contact":"9910122000","role":"FLYING"},
+      {"name":"Dr. Yogita Sharma","dept":"DSW","contact":"9818707813","role":"FLYING"},
+      {"name":"Ms. Rashima Vaid","dept":"EDU & HUM","contact":"9718504552","role":"FLYING"},
+      {"name":"Prof. (Dr.) Sunil Kr Roy","dept":"MGMT & COM","contact":"9636646279","role":"FLYING"},
+      {"name":"Dr. Jyotsna Pandit","dept":"SCIENCES","contact":"9910066999","role":"FLYING"},
+      {"name":"Dr. Arpit Sand","dept":"CHEMISTRY","contact":"9818723194","role":"FLYING"},
+      {"name":"Prof. (Dr.) Sachin Lakra","dept":"CST","contact":"9899400694","role":"FLYING"},
+      {"name":"Dr. Vivek Sharma","dept":"CST","contact":"9717200103","role":"FLYING"},
+      {"name":"Prof. (Dr.) Manpreet Kaur","dept":"CST","contact":"9891967032","role":"FLYING"},
+      {"name":"Dr. Chandni Magoo","dept":"CST","contact":"9871110269","role":"FLYING"},
+      {"name":"Prof. (Dr.) Parneeta Dhaliwal","dept":"CST","contact":"9871425044","role":"FLYING"},
+      {"name":"Prof. (Dr.) Prinima Gupta","dept":"CST","contact":"9971405007","role":"FLYING"},
+      {"name":"Dr. Punam Rattan","dept":"CST","contact":"7888493133","role":"FLYING"},
+      {"name":"Dr. D.K. Sharma","dept":"PHYSICS","contact":"9953237263","role":"FLYING"},
+      {"name":"Dr. Ruchi Gupta","dept":"MATHEMATICS","contact":"7042884515","role":"FLYING"},
+      {"name":"Mohd. Javed Idrisi","dept":"MATHEMATICS","contact":"8354819985","role":"FLYING"},
+      {"name":"Prof. (Dr.) Deepa Arora","dept":"MATHEMATICS","contact":"9818470909","role":"FLYING"},
+      {"name":"Dr. Sandeep Kumar","dept":"PHYSICS","contact":"9625796282","role":"FLYING"},
+      {"name":"Dr. Ruchi Lal","dept":"LAW","contact":"7042080343","role":"FLYING"},
+      {"name":"Dr. Priyanka Bansal","dept":"R&AI","contact":"9810907022","role":"FLYING"},
+      {"name":"Prof. (Dr.) Rashee Singh","dept":"EDU & HUM","contact":"9899795947","role":"FLYING"},
+      {"name":"Dr. Sudhish Kumar Shukla","dept":"CHEMISTRY","contact":"9555961834","role":"FLYING"},
+      {"name":"Dr. Rimple Manchanda","dept":"BUSINESS","contact":"9871724313","role":"FLYING"},
+      {"name":"Dr. Pragati Chauhan","dept":"BUSINESS","contact":"9899222792","role":"FLYING"},
+      {"name":"Dr. Pooja Kapoor","dept":"BUSINESS","contact":"9911397733","role":"FLYING"},
+      {"name":"Dr. Animesh Singh","dept":"BUSINESS","contact":"9818537839","role":"FLYING"},
+      {"name":"Dr. Saratendu Kumar Bose","dept":"LAW","contact":"9999698003","role":"FLYING"},
+      {"name":"Dr. K. Deepa","dept":"ECE","contact":"9910399621","role":"FLYING"},
+      {"name":"Dr. Kavita Singh","dept":"ECE","contact":"9818051582","role":"FLYING"},
+      {"name":"Dr. Niharika Thakur","dept":"ECE","contact":"9810553515","role":"FLYING"},
+      {"name":"Dr. Charu Pathak","dept":"ECE","contact":"9311156130","role":"FLYING"},
+      {"name":"Dr. Mrinal Pandey","dept":"CST","contact":"9899557252","role":"FLYING"},
+      {"name":"Dr. Ajit Katyar","dept":"ME","contact":"9350249278","role":"FLYING"},
+      {"name":"Dr. Joginder Singh","dept":"M.E","contact":"9810878763","role":"FLYING"},
+      {"name":"Dr. Dinesh Tripathi","dept":"MATHS","contact":"7827580414","role":"INVIGILATION"},
+      {"name":"Dr. Advin Masih","dept":"MATHS","contact":"9278230119","role":"INVIGILATION"},
+      {"name":"Dr. Ankita Gaur","dept":"MATHS","contact":"8860448319","role":"INVIGILATION"},
+      {"name":"Dr. Bhawna Singla","dept":"MATHS","contact":"9958678588","role":"INVIGILATION"},
+      {"name":"Dr. Kushal Lalwani","dept":"MATHS","contact":"9891513452","role":"INVIGILATION"},
+      {"name":"Dr. Ananna Bardhan","dept":"PHYSICS","contact":"8860836871","role":"INVIGILATION"},
+      {"name":"Dr. Deepti Maikhuri","dept":"PHYSICS","contact":"9717013240","role":"INVIGILATION"},
+      {"name":"Dr. Moditma","dept":"PHYSICS","contact":"7042952469","role":"INVIGILATION"},
+      {"name":"Dr. Shiv Kumar Dixit","dept":"PHYSICS","contact":"9891615224","role":"INVIGILATION"},
+      {"name":"Dr. Ekta Rawat","dept":"CHEMISTRY","contact":"9896101641","role":"INVIGILATION"},
+      {"name":"Dr. Priti Gupta","dept":"CHEMISTRY","contact":"8800533688","role":"INVIGILATION"},
+      {"name":"Dr. Roopa Rani","dept":"CHEMISTRY","contact":"9457916726","role":"INVIGILATION"},
+      {"name":"Dr. Vinayak Vandan Pathak","dept":"CHEMISTRY","contact":"9870400874","role":"INVIGILATION"},
+      {"name":"Dr. Deepti Thukral","dept":"CST","contact":"9958208333","role":"INVIGILATION"},
+      {"name":"Dr. Mamta Arora","dept":"CST","contact":"987359315","role":"INVIGILATION"},
+      {"name":"Dr. Manoj Kumar","dept":"CST","contact":"9550321552","role":"INVIGILATION"},
+      {"name":"Dr. Meena Chauhan","dept":"CST","contact":"9582473211","role":"INVIGILATION"},
+      {"name":"Dr. Neetu Chaudhary","dept":"CST","contact":"9915496904","role":"INVIGILATION"},
+      {"name":"Dr. Renjini Jain","dept":"CST","contact":"9871543454","role":"INVIGILATION"},
+      {"name":"Dr. Sanjay Singh","dept":"CST","contact":"9654702152","role":"INVIGILATION"},
+      {"name":"Dr. Urmila Sharma","dept":"CST","contact":"9911306205","role":"INVIGILATION"},
+      {"name":"Dr. Ganga Sharma","dept":"CST","contact":"7042148199","role":"INVIGILATION"},
+      {"name":"Dr. Gunjan Chaudhani","dept":"CST","contact":"9136262886","role":"INVIGILATION"},
+      {"name":"Dr. Jagriti","dept":"CST","contact":"9910699688","role":"INVIGILATION"},
+      {"name":"Dr. Simple Sharma","dept":"CST","contact":"9711236712","role":"INVIGILATION"},
+      {"name":"Gunjan Aggarwal","dept":"CST","contact":"9899354862","role":"INVIGILATION"},
+      {"name":"Ravi Prakash Chaturvedi","dept":"CST","contact":"9873050339","role":"INVIGILATION"},
+      {"name":"Dimple Sapru","dept":"CST","contact":"9971468759","role":"INVIGILATION"},
+      {"name":"Annu Mishra","dept":"CST","contact":"7530910387","role":"INVIGILATION"},
+      {"name":"Deepika Pal","dept":"CST","contact":"8851190815","role":"INVIGILATION"},
+      {"name":"Anjali Mehta","dept":"CST","contact":"9910104528","role":"INVIGILATION"},
+      {"name":"Agha Imran Hussain","dept":"CST","contact":"9311849813","role":"INVIGILATION"},
+      {"name":"Anup Singh Kushwaha","dept":"CST","contact":"7838924658","role":"INVIGILATION"},
+      {"name":"Anu Priya Sharma","dept":"CST","contact":"9815820463","role":"INVIGILATION"},
+      {"name":"Deepanshi Gupta","dept":"CST","contact":"8368792153","role":"INVIGILATION"},
+      {"name":"Esha Sharma","dept":"CST","contact":"9711352464","role":"INVIGILATION"},
+      {"name":"Jyoti Kanwal","dept":"CST","contact":"8010999704","role":"INVIGILATION"},
+      {"name":"Ram Chatterjee","dept":"CST","contact":"9996051136","role":"INVIGILATION"},
+      {"name":"Dr. Shalu","dept":"CST","contact":"7042269890","role":"INVIGILATION"},
+      {"name":"Ms. Taramani Sachdeva","dept":"CST","contact":"9872876033","role":"INVIGILATION"},
+      {"name":"Dr. Pooja Sachdeva","dept":"CST","contact":"971386695","role":"INVIGILATION"},
+      {"name":"Babita Yadav","dept":"CST","contact":"9990123506","role":"INVIGILATION"},
+      {"name":"Dr. Pushpa","dept":"CST","contact":"8059582443","role":"INVIGILATION"},
+      {"name":"Mr. Mahesh Swami","dept":"CST","contact":"7982985139","role":"INVIGILATION"},
+      {"name":"Ms. Aarti Kaushik","dept":"CST","contact":"9560374606","role":"INVIGILATION"},
+      {"name":"Juli Prothi","dept":"CST","contact":"9958260816","role":"INVIGILATION"},
+      {"name":"Dr. Meenakshi Gupta","dept":"ECE","contact":"9717116256","role":"INVIGILATION"},
+      {"name":"Dr. Richa Adlakha","dept":"ECE","contact":"9711340449","role":"INVIGILATION"},
+      {"name":"Mr. Vijay Kumar Gill","dept":"ECE","contact":"8708855928","role":"INVIGILATION"},
+      {"name":"Dr. Lokesh Bhardwaj","dept":"ECE","contact":"9999568802","role":"INVIGILATION"},
+      {"name":"Dr. Shakti Kumar Singh","dept":"ECE","contact":"9864098652","role":"INVIGILATION"},
+      {"name":"Ms. Nitu Chauhan","dept":"ECE","contact":"9718258836","role":"INVIGILATION"},
+      {"name":"Dr. Jeevika Nath","dept":"ECE","contact":"7005366305","role":"INVIGILATION"},
+      {"name":"Dr. Eram Aziz","dept":"EDUCATION","contact":"9891021094","role":"INVIGILATION"},
+      {"name":"Dr. Mira Mishra","dept":"EDUCATION","contact":"9910004028","role":"INVIGILATION"},
+      {"name":"Dr. Savita Sharma","dept":"EDUCATION","contact":"9911359641","role":"INVIGILATION"},
+      {"name":"Dr. Pooja Parmar","dept":"EDUCATION","contact":"7077552323","role":"INVIGILATION"},
+      {"name":"Dr. Lakshay","dept":"EDUCATION","contact":"9818433708","role":"INVIGILATION"},
+      {"name":"Dr. Shubha Misra","dept":"EDUCATION","contact":"9810811681","role":"INVIGILATION"},
+      {"name":"Dr. Dinesh","dept":"EDUCATION","contact":"7012491737","role":"INVIGILATION"},
+      {"name":"Dr. Sangeet Sharma","dept":"EDUCATION","contact":"9871165187","role":"INVIGILATION"},
+      {"name":"Dr. Kanitha K","dept":"EDUCATION","contact":"9497824770","role":"INVIGILATION"},
+      {"name":"Ms. Meenal Rawat","dept":"EDUCATION","contact":"8800125212","role":"INVIGILATION"},
+      {"name":"Ms. Aishwarya Sharma","dept":"EDUCATION","contact":"9569586236","role":"INVIGILATION"},
+      {"name":"Ms. Prachey Prema","dept":"EDUCATION","contact":"9717999628","role":"INVIGILATION"},
+      {"name":"Mr. Sharv Datt Anand","dept":"EDUCATION","contact":"9211958896","role":"INVIGILATION"},
+      {"name":"Shivni Gaur","dept":"EDUCATION","contact":"8130418220","role":"INVIGILATION"},
+      {"name":"Mr. Ajit","dept":"EDUCATION","contact":"9560433593","role":"INVIGILATION"},
+      {"name":"Dr. Saperna Vinati","dept":"EDUCATION","contact":"8810534477","role":"INVIGILATION"},
+      {"name":"Dr. Chhavi Kulshretha","dept":"LAW","contact":"9018846956","role":"INVIGILATION"},
+      {"name":"Dr. Tarundeep Kaur","dept":"LAW","contact":"9971099165","role":"INVIGILATION"},
+      {"name":"Dr. Ghazala Abidin","dept":"LAW","contact":"9811434403","role":"INVIGILATION"},
+      {"name":"Dr. Apala Vatsa","dept":"LAW","contact":"9773683369","role":"INVIGILATION"},
+      {"name":"Arushi Malik","dept":"LAW","contact":"9899385539","role":"INVIGILATION"},
+      {"name":"Asmita Patel","dept":"LAW","contact":"8879056788","role":"INVIGILATION"},
+      {"name":"Nidhi","dept":"LAW","contact":"9458578972","role":"INVIGILATION"},
+      {"name":"Simran Singh","dept":"LAW","contact":"8860381400","role":"INVIGILATION"},
+      {"name":"Ms. Vani Katariya","dept":"LAW","contact":"9899176166","role":"INVIGILATION"},
+      {"name":"Yamini Atreya","dept":"LAW","contact":"8290189971","role":"INVIGILATION"},
+      {"name":"Surabhi Sharma","dept":"LAW","contact":"8377068898","role":"INVIGILATION"},
+      {"name":"Garima Pahwa","dept":"LAW","contact":"8864096193","role":"INVIGILATION"},
+      {"name":"Aditya Verma","dept":"LAW","contact":"8759981879","role":"INVIGILATION"},
+      {"name":"Anupam Sharma","dept":"LAW","contact":"8595724875","role":"INVIGILATION"},
+      {"name":"Mr. Deepak Bansal","dept":"LAW","contact":"9599422097","role":"INVIGILATION"},
+      {"name":"Dr. Tina Haseeja","dept":"SOB","contact":"7303166339","role":"INVIGILATION"},
+      {"name":"Dr. Sahiba Sharma","dept":"SOB","contact":"8708351877","role":"INVIGILATION"},
+      {"name":"Dr. Sonal Trivedi","dept":"SOB","contact":"7987391408","role":"INVIGILATION"},
+      {"name":"Dr. Shweta Goel","dept":"SOB","contact":"8700172301","role":"INVIGILATION"},
+      {"name":"Dr. Vandna Bhat","dept":"SOB","contact":"9971965003","role":"INVIGILATION"},
+      {"name":"Dr. Khushboo Gulati","dept":"SOB","contact":"8826656367","role":"INVIGILATION"},
+      {"name":"Mr. Neeraj Chopra","dept":"SOB","contact":"8587856290","role":"INVIGILATION"},
+      {"name":"Ms. Shanu Jain","dept":"SOB","contact":"9971346735","role":"INVIGILATION"},
+      {"name":"Shikha Nagar","dept":"SOB","contact":"8527321138","role":"INVIGILATION"},
+      {"name":"Dr. Minakshi Sharma","dept":"SOB","contact":"7088932714","role":"INVIGILATION"},
+      {"name":"Dr. Rashi Banerji","dept":"SOB","contact":"9818210553","role":"INVIGILATION"},
+      {"name":"Dr. Shagun Chahal","dept":"SOB","contact":"9996012359","role":"INVIGILATION"},
+      {"name":"Akanksha Kathuria","dept":"SOB","contact":"8447474832","role":"INVIGILATION"},
+      {"name":"Dr. Jimmy Mehta","dept":"M.E","contact":"9818846413","role":"INVIGILATION"},
+      {"name":"Dr. Piyush Mahendru","dept":"M.E","contact":"9811288018","role":"INVIGILATION"},
+      {"name":"Dr. Smriti Mishra","dept":"M.E","contact":"9953930940","role":"INVIGILATION"},
+      {"name":"Dr. Zeba Naaz","dept":"M.E","contact":"8588813590","role":"INVIGILATION"},
+      {"name":"Mr. Mandeep Bhadana","dept":"M.E","contact":"8851157600","role":"INVIGILATION"},
+      {"name":"Mr. Nazish Ahmad Shamsi","dept":"M.E","contact":"9540183402","role":"INVIGILATION"},
+      {"name":"Dr. Pradeep Kumar Mouria","dept":"M.E","contact":"8882307373","role":"INVIGILATION"},
+      {"name":"Dr. Monika Garg","dept":"INTERDISCIPLINARY ENGG","contact":"9650353336","role":"INVIGILATION"},
+      {"name":"Dr. Jai Prakash Sharma","dept":"INTERDISCIPLINARY ENGG","contact":"9015343436","role":"INVIGILATION"},
+      {"name":"Dr. Rajnesh Kumar Singh","dept":"INTERDISCIPLINARY ENGG","contact":"7836901337","role":"INVIGILATION"},
+      {"name":"Dr. Piyush Charan","dept":"INTERDISCIPLINARY ENGG","contact":"9559313115","role":"INVIGILATION"},
+      {"name":"Dr. Gurpeet Singh Matharou","dept":"INTERDISCIPLINARY ENGG","contact":"9413067409","role":"INVIGILATION"},
+      {"name":"Dr. Gianender Kajal","dept":"INTERDISCIPLINARY ENGG","contact":"8800997655","role":"INVIGILATION"},
+      {"name":"Dr. Neha Chaudhary","dept":"INTERDISCIPLINARY ENGG","contact":"9958460544","role":"INVIGILATION"},
+      {"name":"Dr. Awwab Mohammad","dept":"INTERDISCIPLINARY ENGG","contact":"9990642712","role":"INVIGILATION"}
+    ];
+
+    const slotColHint = {
+      "Morning": "1st column",
+      "Afternoon": "2nd column",
+      "Evening": "3rd column"
+    };
+
+    function badge(role) {
+      return role === "FLYING"
+        ? '<span class="badge badge-flying">FLYING</span>'
+        : '<span class="badge badge-invig">INVIGILATION</span>';
+    }
+
+    function render() {
+      const date = document.getElementById("dateSelect").value;
+      const slot = document.getElementById("slotSelect").value;
+      const q = document.getElementById("searchInput").value.trim().toLowerCase();
+
+      document.getElementById("slotNote").innerHTML =
+        `Showing all Flying Squad & Invigilation faculty for <b>${date} – ${slot}</b>. ` +
+        `Cross-check the <b>${slotColHint[slot]} under ${date}</b> in the PDF for blanks (= free).`;
+
+      let list = faculty.slice();
+      if (q) {
+        list = list.filter(f =>
+          f.name.toLowerCase().includes(q) ||
+          f.dept.toLowerCase().includes(q)
+        );
+      }
+      list.sort((a, b) => a.name.localeCompare(b.name));
+
+      const tbody = document.getElementById("tableBody");
+      const stats = document.getElementById("stats");
+
+      if (list.length === 0) {
+        tbody.innerHTML = '<tr><td colspan="5" class="empty">No matching faculty</td></tr>';
+        stats.innerHTML = "";
+        return;
+      }
+
+      stats.innerHTML = `
+        <div class="stat">Date: <b>${date}</b></div>
+        <div class="stat">Slot: <b>${slot}</b></div>
+        <div class="stat">Faculty shown: <b>${list.length}</b></div>
+      `;
+
+      tbody.innerHTML = list.map((f, i) => `
+        <tr>
+          <td>${i + 1}</td>
+          <td>${f.name}</td>
+          <td>${f.dept}</td>
+          <td><a class="contact" href="tel:${f.contact}">${f.contact}</a></td>
+          <td>${badge(f.role)}</td>
+        </tr>
+      `).join("");
+    }
+
+    document.getElementById("searchInput").addEventListener("input", render);
+    document.getElementById("dateSelect").addEventListener("change", render);
+    document.getElementById("slotSelect").addEventListener("change", render);
+    render();
+  </script>
+</body>
+</html>
